@@ -291,6 +291,47 @@ Implementers should tolerate unexpected new fields in messages.
 *(Detailed structures for `User`, `Auth`, `ThemeSettings` objects would be defined in a full specification appendix or separate schema files.)*
 
 ## **18. Appendix: Example JWK Set, JWT Header, JWT Payload**
-*(Assumed present, as per previous drafts. Contains JSON examples for a JWK set, a JWT header with `kid`, and a JWT payload with standard claims like `iss`, `sub`, `aud`, `exp`, `scope`, `nonce`.)*
+
+### **Example JWK Set**
+
+```json
+{
+  "keys": [
+    {
+      "kty": "RSA",
+      "kid": "2025-05-20-key1",
+      "use": "sig",
+      "alg": "RS256",
+      "n": "....",
+      "e": "AQAB"
+    }
+  ]
+}
+```
 
 ---
+
+### **Example JWT Header**
+
+```json
+{
+  "alg": "RS256",
+  "typ": "JWT",
+  "kid": "2025-05-20-key1"
+}
+```
+
+---
+
+### **Example JWT Payload**
+
+```json
+{
+  "iss": "https://host.com",
+  "sub": "user-123",
+  "aud": "https://store.com/embed",
+  "exp": 1753058400,
+  "scope": ["view_product", "checkout"],
+  "nonce": "random-string"
+}
+```
